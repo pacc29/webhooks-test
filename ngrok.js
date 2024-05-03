@@ -1,6 +1,11 @@
-const ngrok = require('@ngrok/ngrok');
-const port = 3000;
+// Require ngrok javascript sdk
+const ngrok = require("@ngrok/ngrok");
+// import ngrok from '@ngrok/ngrok' // if inside a module
 
+(async function() {
+  // Establish connectivity
+  const listener = await ngrok.forward({ addr: 3000, authtoken_from_env: true });
 
-ngrok.connect({ addr: port, authtoken_from_env: true })
-	.then(listener => console.log(`Ingress established at: ${listener.url()}`));
+  // Output ngrok url to console
+  console.log(`Ingress established at: ${listener.url()}`);
+})();
