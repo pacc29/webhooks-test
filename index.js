@@ -17,11 +17,11 @@ app.get("/events", (req, res) => {
   return res.json(events).status(200);
 });
 
+
+ngrok.connect({ addr: port, authtoken_from_env: true })
+.then(listener => console.log(`Ingress established at: ${listener.url()}`));
+
+//
 app.listen(port, () => {
   console.log(`Servidor escuchando en el puerto ${port}`);
 }); 
-
-ngrok.connect({ addr: port, authtoken_from_env: true })
-	.then(listener => console.log(`Ingress established at: ${listener.url()}`));
-
-    //
