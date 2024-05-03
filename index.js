@@ -1,4 +1,5 @@
 const express = require("express");
+const ngrok = require('@ngrok/ngrok');
 const app = express();
 const port = 3000;
 
@@ -19,4 +20,8 @@ app.get("/events", (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor escuchando en el puerto ${port}`);
 }); 
+
+ngrok.connect({ addr: port, authtoken_from_env: true })
+.then(listener => console.log(`Ingress established at: ${listener.url()}`));
+
 //
