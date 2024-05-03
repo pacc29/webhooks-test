@@ -7,7 +7,7 @@ app.use(express.json());
 let events = [];
 
 app.post("/hook", (req, res) => {
-  console.log("Capture event of Github WebHook");
+  console.log("Evento capturado de Github WebHook");
   events.push(req.body);
   return res.status(200).end();
 });
@@ -17,5 +17,7 @@ app.get("/events", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server listen on http://localhost:${port}`);
+  console.log(`Servidor escuchando en el puerto ${port}`);
 }); 
+
+//
